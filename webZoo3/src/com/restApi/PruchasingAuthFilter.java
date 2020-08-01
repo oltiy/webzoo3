@@ -17,10 +17,11 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import enums.ClientType;
 
-@Auth
+
+@PruchasingAuth
 @Provider
 @Priority(Priorities.AUTHENTICATION)
-public class AuthFilter implements ContainerRequestFilter {
+public class PruchasingAuthFilter implements ContainerRequestFilter {
 
     private static final String REALM = "login";
     private static final String AUTHENTICATION_SCHEME = "Bearer";

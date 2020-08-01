@@ -81,8 +81,7 @@ public class AdminResorce {
 	public PurchasingMan getSpecificPurchasingMan(@PathParam("id") int id) {
 		return admin.getPurchasingMan(id);
 	}
-	
-	
+
 	@POST
 	@Path("/worker")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -117,6 +116,7 @@ public class AdminResorce {
 	
 	@GET
 	@Path("/worker")
+	@AdminAuth
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Workers> getAllWorker(@QueryParam( "name")String name)  {
 		
@@ -133,7 +133,6 @@ public class AdminResorce {
 		return allWorker;
 	
 	}
-	
 	
 	
 }	

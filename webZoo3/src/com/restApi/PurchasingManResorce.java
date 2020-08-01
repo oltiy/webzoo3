@@ -35,6 +35,7 @@ public class PurchasingManResorce {
 	
 	@POST
 	@Path("/")
+	@AdminAuth
     @Consumes(MediaType.APPLICATION_JSON)
 	public void creatPurchasingMan(PurchasingMan a) {
 		purchasingManDBDAO.creatPurchasingMan(a);
@@ -43,6 +44,7 @@ public class PurchasingManResorce {
 	
 	@DELETE
 	@Path("/{id}")
+	@AdminAuth
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void removePurchasingMan (@PathParam("id") int id) {
 		purchasingManDBDAO.removePurchasingMan(id);
@@ -60,11 +62,12 @@ public class PurchasingManResorce {
 	
 	@GET
 	@Path("/")
-	@Auth
+	@AdminAuth
+	@PruchasingAuth
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<PurchasingMan> getPurchasingMen(@QueryParam( "name")String name, @QueryParam("product")long  productId)  {
+	public PurchasingMan getPurchasingMen(@QueryParam( "name")String name, @QueryParam("product")long  productId)  {
 		
-		Collection<PurchasingMan> allPurchasingMan =  purchasingManDBDAO.getAllPurchasingMen();
+		PurchasingMan allPurchasingMan =  null;
 		
 		
 		if(name !=null) {
@@ -72,10 +75,10 @@ public class PurchasingManResorce {
 			allPurchasingMan=  purchasingManDBDAO.getPurchasingManByName(name);
 		}
 		
-		if (productId != 0L) {
-			
-			allPurchasingMan= purchasingManDBDAO.getPurchasingManByProduct(productId);
-		}
+//		if (productId != 0L) {
+//			
+//			allPurchasingMan= purchasingManDBDAO.getPurchasingManByProduct(productId);
+//		}
 		
 		return allPurchasingMan;
 	

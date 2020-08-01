@@ -24,6 +24,15 @@ public class PruchasingFacdeResorce  {
 
 	PurchasingFacade purchaing = new PurchasingFacade();
 
+	
+	@Path("/")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Product> getAllProduct(){
+		return purchaing.getAllProduct();
+		
+	}
+	
 	@Path("/")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -64,11 +73,5 @@ public class PruchasingFacdeResorce  {
 //	
 //	}
 
-	@Path("/")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Product> getAllProduct(){
-		return purchaing.getAllProduct();
-		
-	}
+	
 }

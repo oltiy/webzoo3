@@ -29,22 +29,25 @@ public class ProductResorce {
 	
 	@Path("/")
 	@POST	
+	@AdminAuth
     @Consumes(MediaType.APPLICATION_JSON)
 	public void createProduct(Product product) {
 		System.out.println(product.getStart_date().toString());
 		productDBDAO.createProduct(product);
 	}
-//	
-//	
-//	@DELETE
-//	@Path("/{id}")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	public void removeProduct(@PathParam("id") int id) {
-//		productDBDAO.removeProduct(id);
-//	}
-//	
+	
+	
+	@DELETE
+	@Path("/{id}")
+	@AdminAuth
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void removeProduct(@PathParam("id") int id) {
+		productDBDAO.removeProduct(id);
+	}
+	
 	@PUT
 	@Path("/")
+	@AdminAuth
 	@Consumes(MediaType.APPLICATION_JSON)
 	public  void updateProduct(Product product) {
 		
@@ -54,6 +57,7 @@ public class ProductResorce {
 //	
 	@Path("/")
 	@GET
+	@AdminAuth
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Product> getProducts(@QueryParam( "title") String title, @QueryParam("type") String type, @QueryParam("m") String m) {
 		 
